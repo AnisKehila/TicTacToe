@@ -1,0 +1,32 @@
+.dark-mode {
+    background-color: #333;
+    color: white;
+}
+.light-mode {
+    background-color: white;
+    color: black;
+}
+
+/* Common CSS for Tic Tac Toe game board */
+.game-board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+.game-cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.game-cell:hover {
+    cursor: pointer;
+    background-color: #ccc;
+}
