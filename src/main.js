@@ -4,6 +4,8 @@ const gameBoard = (() => {
     const startGameBtn = document.querySelector('#start');
     const entrePage = document.querySelector('.front');
     const gameBoard = document.querySelector('.game-board');
+    const result = document.querySelector('.result');
+    const clickSound = new Audio("src/sounds/click.wav");
     startGameBtn.addEventListener('click', () => {
         entrePage.classList.add('d-none');
         gameBoard.classList.remove('d-none');
@@ -33,7 +35,7 @@ const gameBoard = (() => {
         [1,4,7],
         [2,5,8],
         [0,4,8],
-        [2,4,6],
+        [2,4,6]
     ];
     function hoverEffect() {
         cells.forEach(cell => {
@@ -46,12 +48,19 @@ const gameBoard = (() => {
             }
         });
     }
-    function writeIntoBoard(event) {
-        if(event.innerText == '') {
-            event.innerText = playerTurn.mark;
+    function writeIntoBoard(cell) {
+        if(cell.innerText == '') {
+            cell.innerText = playerTurn.mark;
+            clickSound.play();
+            clickSound.currentTime = 0;
         } else {
             return;
         }
+    }
+    function gameEnds() {
+        let cellsArray = new Array(cells);
+        console.log(cellsArray)
+        cellsArray.every(cell => true);
     }
     function boardHandler(event) {
         writeIntoBoard(event.target);
@@ -60,8 +69,13 @@ const gameBoard = (() => {
     }
 
     cells.forEach(cell => {
-        cell.addEventListener('click', boardHandler);
-        hoverEffect();
+        if(!gameEnds()) {
+            cell.addEventListener('click', boardHandler);
+            gameEnds();
+            hoverEffect();
+        } else {
+            console.log('aa')
+        }
     });
 
 });
