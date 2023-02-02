@@ -9,10 +9,27 @@
 </head>
 <header>
     <h1>Tic Tac Toe</h1>
-    <button id="toggle-mode-btn">Toggle Mode</button>
 </header>
-<body class="light-mode">
-    <div class="game-board">
+<body>
+    <div class="front">
+        <h2>Choose game style</h2>
+        <div class="choices">
+            <div id="player-one">
+                <h3>player one</h3>
+                <span data-choice="human" class="selected">Human</span>
+                <span data-choice="AI" class="disabled">AI</span>
+            </div>
+            <div id="player-two">
+                <h3>player two</h3>
+                <span data-choice="human" class="selected">Human</span>
+                <span data-choice="AI" class="disabled">AI</span>
+            </div>
+        </div>
+        <div id="note">AI mode will be added soon!</div>
+        <button id="start">Start game</button>
+    </div>
+    <div class="game-board d-none">
+        <div class="game-cell" data-position="0"></div>
         <div class="game-cell" data-position="1"></div>
         <div class="game-cell" data-position="2"></div>
         <div class="game-cell" data-position="3"></div>
@@ -21,8 +38,9 @@
         <div class="game-cell" data-position="6"></div>
         <div class="game-cell" data-position="7"></div>
         <div class="game-cell" data-position="8"></div>
-        <div class="game-cell" data-position="9"></div>
+        <div id="win-line" class=""></div>
     </div>
+
     <script src="./src/main.js"></script>
 </body>
 </html>
