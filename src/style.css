@@ -149,3 +149,42 @@ body {
 .d-none {
     display: none;
 }
+
+.result-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: bisque;
+    padding: 70px;
+    font-size: 1.8rem;
+    border-radius: 12px;
+    color: indigo;
+    box-shadow: 2px 4px 18px 1px rgba(194,71,71,0.37);
+    -webkit-box-shadow: 2px 4px 18px 1px rgba(194,71,71,0.37);
+    -moz-box-shadow: 2px 4px 18px 1px rgba(194,71,71,0.37);}
+.btns {
+    display: flex;
+    gap: 34px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 22px;
+}
+.btns button {
+    padding: 10px 26px;
+    cursor: pointer;
+}
+.players {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.64rem;
+    margin-bottom: 32px;
+    align-items: center;
+}
+.player.active {
+    padding: 10px 23px;
+    background-color: indianred;
+    color: #eee;
+    transition: .4s;
+}

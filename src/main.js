@@ -4,8 +4,12 @@ const gameBoard = (() => {
     const startGameBtn = document.querySelector('#start');
     const entrePage = document.querySelector('.front');
     const gameBoard = document.querySelector('.game-board');
-    const result = document.querySelector('.result');
     const winLine = document.querySelector('#win-line');
+    const result = document.querySelector('#result');
+    const resContainer = document.querySelector('.result-box');
+    const replayBtn = document.querySelector('#replay');
+    const homeBtn = document.querySelector('#quit');
+    const players = document.querySelectorAll('.player');
     let boardState = new Array(cells.length);
     boardState.fill();
     const clickSound = new Audio("src/sounds/click.wav");
@@ -13,6 +17,7 @@ const gameBoard = (() => {
     startGameBtn.addEventListener('click', () => {
         entrePage.classList.add('d-none');
         gameBoard.classList.remove('d-none');
+        players.forEach(player => player.classList.remove('d-none'));
     });
     class player {
         constructor(name, mark) {
@@ -20,8 +25,8 @@ const gameBoard = (() => {
             this.mark = mark;
         }
     }
-    let playerOne = new player('player One', 'x');
-    let playerTwo = new player('player Two', 'o');
+    let playerOne = new player('Player One', 'x');
+    let playerTwo = new player('Player Two', 'o');
     let playerTurn = playerOne;
     function switchTurns() {
         if(playerTurn === playerOne) {
@@ -74,7 +79,7 @@ const gameBoard = (() => {
     }
     function gameEnds() {
         if(checkForWinner()) {
-            playerTurn === playerOne ? note = `GameOver Player ${playerTwo.name} Won!` : note = `GameOver Player ${playerOne.name} Won!`; 
+            playerTurn === playerOne ? note = `GameOver ${playerTwo.name} Won!` : note = `GameOver ${playerOne.name} Won!`; 
             return true;
         } else if(boardState.every(cell => cell === 'x' || cell === 'o')) {
             note = `GameOver It\'s A Draw!`; 
@@ -89,18 +94,40 @@ const gameBoard = (() => {
                 writeIntoBoard(event.target);
                 boardState[event.target.dataset.position] = playerTurn.mark;
                 switchTurns();
+                players.forEach(player => {
+                    player.classList.remove('active');
+                    if(player.dataset.player === playerTurn.name) {
+                        player.classList.add('active');
+                    }
+                })
                 hoverEffect();
             }
             if(gameEnds()) {
+                resContainer.classList.remove('d-none')
                 result.innerText = note;
             }
         } else {
             return;
         }
     }
+    function resetGame() {
+        boardState.fill(undefined);
+        cells.forEach(cell => cell.innerText = '');
+        resContainer.classList.add('d-none');
+        winLine.className = '';
+        hoverEffect();
+    }
+    function backHome() {
+        resetGame();
+        gameBoard.classList.add('d-none');
+        players.forEach(player => player.classList.add('d-none'));
+        entrePage.classList.remove('d-none');
+    }
     cells.forEach(cell => {
         cell.addEventListener('click', boardHandler);
         hoverEffect();
     });
+    replayBtn.addEventListener('click' , resetGame);
+    homeBtn.addEventListener('click',backHome);
 });
 gameBoard();
