@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-    <title>Tic Tac Toe</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 <header>
-    <h1>Tic Tac Toe</h1>
+    <h1>Tic-Tac-Toe</h1>
     <div class="players">
-        <span class="player active d-none" data-player="Player One">PLAYER ONE</span>
-        <span class="player d-none" data-player="Player Two">PLAYER TWO</span>
+        <span class="player active d-none"></span>
+        <span class="player d-none" ></span>
     </div>
 </header>
 <body>
@@ -20,11 +20,13 @@
         <div class="choices">
             <div id="player-one">
                 <h3>player one</h3>
+                <input type="text" id="player-one-name" placeholder="Choose a name">
                 <span data-choice="human" class="selected">Human</span>
                 <span data-choice="AI" class="disabled">AI</span>
             </div>
             <div id="player-two">
                 <h3>player two</h3>
+                <input type="text" id="player-two-name" placeholder="Choose a name">
                 <span data-choice="human" class="selected">Human</span>
                 <span data-choice="AI" class="disabled">AI</span>
             </div>
