@@ -209,3 +209,13 @@ input {
     align-items: center;
     cursor: pointer;
 }
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+}
+footer a {
+    color: lightcoral;
+}
