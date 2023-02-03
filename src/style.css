@@ -195,3 +195,17 @@ input {
     padding: 9px;
     outline: none;
 }
+#x {
+    position: absolute;
+    left: 92%;
+    top: 4%;
+    font-size: 1.5rem;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

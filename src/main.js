@@ -11,6 +11,7 @@ const gameBoard = (() => {
     const homeBtn = document.querySelector('#quit');
     const players = document.querySelectorAll('.player');
     const clickSound = new Audio("src/sounds/click.wav");
+    const x = document.querySelector('#x');
     let boardState = new Array(cells.length).fill();
     let note;
     let playerOneName = 'Player One';
@@ -125,6 +126,9 @@ const gameBoard = (() => {
             winLine.className = '';
             hoverEffect();
         }
+        x.addEventListener('click', ()=> {
+            resContainer.classList.add('d-none');
+        })
         function backHome() {
             resetGame();
             gameBoard.classList.add('d-none');
