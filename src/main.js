@@ -11,6 +11,7 @@ const gameBoard = (() => {
     const homeBtn = document.querySelector('#quit');
     const players = document.querySelectorAll('.player');
     const clickSound = new Audio("src/sounds/click.wav");
+    const winSound = new Audio("src/sounds/win.wav");
     const x = document.querySelector('#x');
     let boardState = new Array(cells.length).fill();
     let note;
@@ -89,6 +90,7 @@ const gameBoard = (() => {
         function gameEnds() {
             if(checkForWinner()) {
                 playerTurn === playerOne ? note = `GameOver ${playerTwo.name} Won!` : note = `GameOver ${playerOne.name} Won!`; 
+                winSound.play();
                 return true;
             } else if(boardState.every(cell => cell === 'x' || cell === 'o')) {
                 note = `GameOver It\'s A Draw!`; 
